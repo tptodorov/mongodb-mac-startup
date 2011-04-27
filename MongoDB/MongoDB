@@ -10,11 +10,12 @@ test -r /etc/rc.common || exit 1
 . /etc/rc.common
 
 # Set up some defaults
-DBPATH="/usr/local/mongodb/db"
+DBPATH="/opt/local/mongodb/db"
+MONGOD="/opt/local/bin/mongod"
 MONGOD_PORT=27017
 
 StartService(){
-	/usr/local/mongodb/bin/mongod run --dbpath=$DBPATH --port $MONGOD_PORT > /dev/null 2>&1 &
+	$MONGOD run --dbpath=$DBPATH --port $MONGOD_PORT  2>&1 &
 }
 
 StopService() {
